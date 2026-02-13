@@ -10,7 +10,7 @@ class Category(models.Model):
 class Book(models.Model):
     name=models.CharField(max_length=50)
     content=models.TextField()
-    cover=models.ImageField(upload_to=None)
+    cover=models.ImageField(upload_to='books/')
     status=models.BooleanField()
     created_at=models.DateTimeField(auto_now_add=True)
     author=models.ForeignKey(User, on_delete=models.CASCADE)

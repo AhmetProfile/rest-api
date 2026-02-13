@@ -77,6 +77,11 @@ function Form({ route, method }) {
         className="form-button"
         type="submit"
         disabled={method === "register" && password !== confirmPassword}
+        style={
+          method === "register" && password !== confirmPassword
+            ? { backgroundColor: "darkblue" }
+            : null
+        }
       >
         {name}
       </button>

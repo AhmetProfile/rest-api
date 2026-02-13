@@ -1,0 +1,79 @@
+.books-surrounder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    height:100vh;
+    padding: 40px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow-y: auto;
+}
+
+.book-container {
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height:fit-content;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-container:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1.08);
+}
+
+.book-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-container:hover .book-image img {
+    transform: scale(1.05);
+}
+
+.book-content {
+    padding: 16px;
+}
+
+.book-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.book-content p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.5;
+}
+
+.inspect-button {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8e97e7 0%, #618bff 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.inspect-button:hover {
+    transform: matrix3d(1.02, 0, 0, 0, 0, 1.05, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}

@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer,BookSerializer
+from .serializers import UserSerializer,BookSerializer, CategorySerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Book
+from .models import Book, Category
 
 class BookListCreate(generics.ListCreateAPIView):
     serializer_class = BookSerializer
@@ -17,6 +17,11 @@ class BookListCreate(generics.ListCreateAPIView):
             serializer.save(author=self.request.user)
         else:
             print(serializer.errors)
+
+class ListCategoryView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
             
 class BookDelete(generics.DestroyAPIView):
     serializer_class = BookSerializer
@@ -31,3 +36,4 @@ class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+    
