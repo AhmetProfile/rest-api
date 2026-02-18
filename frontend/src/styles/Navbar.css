@@ -116,3 +116,66 @@ body {
   font-size: 0.8em;
   transition: transform 0.3s;
 }
+
+/* Drawer Base Styles */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%); /* Hidden by default */
+  padding: 20px;
+  color: #333;
+}
+
+.drawer.open {
+  transform: translateX(0); /* Slides in */
+}
+
+/* Overlay to dim the background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Search Bar Inside Drawer */
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.categories {
+  list-style: none;
+  padding: 0;
+}
+
+.categories li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.categories a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
