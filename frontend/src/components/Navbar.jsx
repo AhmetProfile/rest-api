@@ -5,12 +5,25 @@ import api from "../api";
 
 function Navbar() {
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
     getUser();
+    getCategory();
   }, []);
+
+  const getCategory = async () => {
+    try {
+      const response = await api.get("api/categories");
+      console.log(response.data);
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
 
   const toggleDrawer = (e) => {
     e.preventDefault(); // Stops the logo from navigating to "/"
@@ -48,18 +61,11 @@ function Navbar() {
           </div>
 
           <ul className="categories">
-            <li>
-              <a href="/category/fiction">Fiction</a>
-            </li>
-            <li>
-              <a href="/category/non-fiction">Non-Fiction</a>
-            </li>
-            <li>
-              <a href="/category/science">Science</a>
-            </li>
-            <li>
-              <a href="/category/history">History</a>
-            </li>
+            {categories.map((category) => (
+              <li>
+                <a href="">{category.name}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
