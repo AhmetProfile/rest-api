@@ -45,3 +45,24 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(83, 93, 182, 0.3);
 }
+
+.form-toggle {
+  margin: 15px 0;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+.form-link {
+  color: #535db6;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.form-link:hover {
+  color: #255fff;
+  border-bottom: 2px solid #255fff;
+}

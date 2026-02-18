@@ -1,0 +1,128 @@
+/* Account.css */
+
+.account-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.account-header h1 {
+  font-size: 1.8rem;
+  color: #2d2d2d;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 16px;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.form-field h2.field-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2d2d2d;
+  text-transform: none;
+  letter-spacing: normal;
+  background-color: #f7f7f7;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.form-field input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #2d2d2d;
+  background-color: #fafafa;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-field input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  background-color: #fff;
+}
+
+.form-field input::placeholder {
+  color: #aaa;
+}
+
+.submit-btn {
+  margin-top: 8px;
+  padding: 12px 24px;
+  background-color: #6366f1;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: #4f46e5;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.field-row input {
+  flex: 1;
+}
+
+.field-row .field-value {
+  flex: 1;
+}
+
+.edit-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6366f1;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid #6366f1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.edit-btn:hover {
+  background-color: #6366f1;
+  color: #fff;
+}

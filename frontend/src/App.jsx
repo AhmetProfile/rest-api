@@ -7,6 +7,9 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 import BookCreate from "./pages/BookCreate";
+import Details from "./pages/Details";
+import About from "./pages/About";
+import Account from "./pages/Account";
 
 function Logout() {
   localStorage.clear();
@@ -40,6 +43,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/details/:id"
+            element={
+              <ProtectedRoute>
+                <Details />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/account" element={<Account />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />

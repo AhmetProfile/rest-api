@@ -1,10 +1,12 @@
 import React from "react";
 import "../styles/Book.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Book({ books }) {
-  const handleLink = () => {
-    Navigate("details/");
+  const navigate = useNavigate();
+
+  const handleLink = (bookId) => {
+    navigate(`/details/${bookId}`);
   };
 
   return (
@@ -17,7 +19,10 @@ function Book({ books }) {
           <div className="book-content">
             <h3>{book.name}</h3>
             <p>{book.content.slice(0, 100)}...</p>
-            <button className="inspect-button" onClick={handleLink}>
+            <button
+              className="inspect-button"
+              onClick={() => handleLink(book.id)}
+            >
               İncele
             </button>
           </div>

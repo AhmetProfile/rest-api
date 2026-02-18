@@ -64,15 +64,29 @@ function Form({ route, method }) {
         className="form-input"
         onChange={handlePasswordChange}
       />
-      {method === "login" ? null : (
-        <input
-          type="password"
-          value={confirmPassword}
-          placeholder="Confirm Password"
-          className="form-input"
-          onChange={handleConfirmPassword}
-        />
+      {method === "login" ? (
+        <h4 className="form-toggle">
+          <a className="form-link" onClick={() => navigate("/register")}>
+            Dont Have An Account?
+          </a>
+        </h4>
+      ) : (
+        <>
+          <input
+            type="password"
+            value={confirmPassword}
+            placeholder="Confirm Password"
+            className="form-input"
+            onChange={handleConfirmPassword}
+          />
+          <h4 className="form-toggle">
+            <a className="form-link" onClick={() => navigate("/login")}>
+              Already Have An Account?
+            </a>
+          </h4>
+        </>
       )}
+
       <button
         className="form-button"
         type="submit"

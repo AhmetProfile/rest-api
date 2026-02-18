@@ -5,7 +5,6 @@ import Book from "./Book";
 
 function Home() {
   const [books, setBooks] = useState([]);
-  const [name, setName] = useState("");
 
   useEffect(() => {
     getBooks();
