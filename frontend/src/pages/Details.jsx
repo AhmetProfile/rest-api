@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import api from "../api";
 import "../styles/Details.css";
 
 function Details() {
   const { id } = useParams();
   const [books, setBooks] = useState([]);
+  const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getBooks();
+    api.get("api/user").then((res) => setUser(res.data));
   }, []);
-
-  const navigate = useNavigate();
 
   const deleteBook = async () => {
     try {
@@ -52,9 +54,23 @@ function Details() {
                 Return
               </button>
               <br />
-              <button className="details-delete" onClick={() => deleteBook()}>
-                Delete
-              </button>
+              {user && user.username === book.author && (
+                <>
+                  <button
+                    className="details-delete"
+                    onClick={() => deleteBook()}
+                  >
+                    Delete
+                  </button>
+                  <br />
+                  <button
+                    className="update-button"
+                    onClick={() => navigate(`/update/${book.id}`)}
+                  >
+                    Update
+                  </button>
+                </>
+              )}
             </div>
           </div>
         ))}

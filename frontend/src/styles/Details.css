@@ -69,6 +69,7 @@
 }
 
 .details-button {
+  width: 100%;
   padding: 12px 30px;
   background: linear-gradient(135deg, #535db6 0%, #255fff 100%);
   color: white;
@@ -91,8 +92,9 @@
 }
 
 .details-delete {
+  width: 100%;
   padding: 12px 30px;
-  background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+  background: linear-gradient(135deg, #af1d13 0%, #bd1f14 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -101,7 +103,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
-  margin-left: 10px;
 }
 
 .details-delete:hover {
@@ -130,4 +131,23 @@
   .details-content h3 {
     font-size: 22px;
   }
+}
+
+.update-button {
+  width: 100%;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #44b372 0%, #13b857 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.update-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 182, 140, 0.3);
 }

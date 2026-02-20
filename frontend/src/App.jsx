@@ -10,6 +10,8 @@ import BookCreate from "./pages/BookCreate";
 import Details from "./pages/Details";
 import About from "./pages/About";
 import Account from "./pages/Account";
+import Update from "./pages/Update";
+import Footer from "./components/Footer";
 
 function Logout() {
   localStorage.clear();
@@ -22,16 +24,25 @@ function RegisterAndLogout() {
 }
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar
+          setSelectedCategory={setSelectedCategory}
+          setSearchQuery={setSearchQuery}
+        />
         <Routes>
           <Route
             path="/"
             element={
               <ProtectedRoute>
-                <Home />
+                <Home
+                  selectedCategory={selectedCategory}
+                  searchQuery={searchQuery}
+                />
               </ProtectedRoute>
             }
           />
@@ -40,6 +51,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <BookCreate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/update/:id"
+            element={
+              <ProtectedRoute>
+                <Update />
               </ProtectedRoute>
             }
           />
@@ -58,6 +77,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

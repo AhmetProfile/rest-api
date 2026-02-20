@@ -6,6 +6,8 @@
     padding: 40px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     overflow-y: auto;
+        justify-content: center; /* add this */
+
 }
 
 .book-container {

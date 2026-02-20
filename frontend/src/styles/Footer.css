@@ -1,0 +1,46 @@
+.footer-container {
+  display: flex;
+  height: 70px;
+
+  flex-direction: row;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #667eea;
+}
+
+.footer-logo {
+  font-size: 28px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}

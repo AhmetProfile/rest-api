@@ -19,6 +19,13 @@ class BookListCreate(generics.ListCreateAPIView):
             serializer.save(author=self.request.user)
         else:
             print(serializer.errors)
+            
+class BookUpdate(generics.RetrieveUpdateAPIView):
+    serializer_class = BookSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Book.objects.filter(author=self.request.user)
 
 class ListCategoryView(generics.ListAPIView):
     queryset = Category.objects.all()

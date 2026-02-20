@@ -2,9 +2,27 @@ import React, { useEffect, useState } from "react";
 import api from "../api";
 import axios from "axios";
 import Book from "./Book";
+import "../styles/Home.css";
 
-function Home() {
+function Home({ selectedCategory, searchQuery }) {
   const [books, setBooks] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 10;
+  const start = (currentPage - 1) * booksPerPage;
+  const end = start + booksPerPage;
+  const filteredBooks = books
+    .filter((book) =>
+      selectedCategory ? book.category.name === selectedCategory : true,
+    )
+    .filter((book) =>
+      searchQuery
+        ? book.name.toLowerCase().includes(searchQuery.toLowerCase())
+        : true,
+    );
+
+  const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+  const paginatedBooks = filteredBooks.slice(start, end);
 
   useEffect(() => {
     getBooks();
@@ -26,7 +44,26 @@ function Home() {
 
   return (
     <div>
-      <Book key={books.id} books={books} />
+      <Book books={paginatedBooks} />
+      <div className="pagination-container">
+        <button
+          className="pagination-button"
+          onClick={() => setCurrentPage((p) => p - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="pagination-info">
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          className="pagination-button"
+          onClick={() => setCurrentPage((p) => p + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

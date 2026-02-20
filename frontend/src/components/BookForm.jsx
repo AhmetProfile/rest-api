@@ -3,7 +3,7 @@ import "../styles/BookForm.css";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 
-function BookForm({ method }) {
+function BookForm({ method, id }) {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -39,9 +39,9 @@ function BookForm({ method }) {
       formData.append("content", content);
       if (image) formData.append("cover", image);
       formData.append("status", status);
-      if (category) formData.append("category", category);
+      if (category) formData.append("category_id", category);
 
-      const response = await api.put(`/api/books/`, formData);
+      const response = await api.put(`/api/books/${id}/`, formData);
       if (response.status === 200 || response.status === 201) {
         alert("Book Updated");
         navigate("/");
@@ -68,7 +68,7 @@ function BookForm({ method }) {
       formData.append("content", content);
       if (image) formData.append("cover", image);
       formData.append("status", status);
-      if (category) formData.append("category", category);
+      if (category) formData.append("category_id", category);
 
       const response = await api.post("/api/books/", formData);
       if (response.status === 201) {

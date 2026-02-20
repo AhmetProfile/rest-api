@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { FaBook, FaSearch, FaTimes, FaChevronDown } from "react-icons/fa";
+import { MdAccountCircle } from "react-icons/md";
 import "../styles/Navbar.css";
 import api from "../api";
+import { useLocation } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ setSelectedCategory, setSearchQuery }) {
   const [user, setUser] = useState(null);
-  const [categories, setCategories] = useState(null);
+  const [categories, setCategories] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   useEffect(() => {
-    getUser();
     getCategory();
+    getUser();
   }, []);
 
   const getCategory = async () => {
@@ -45,38 +50,66 @@ function Navbar() {
 
   return (
     <>
-      <div className={`drawer ${isDrawerOpen ? "open" : ""}`}>
-        <div className="drawer-header">
-          <h3>Menu</h3>
-          <FaTimes
-            className="close-icon"
-            onClick={() => setIsDrawerOpen(false)}
-          />
-        </div>
+      {user && isHome && (
+        <>
+          {isDrawerOpen && (
+            <div className="overlay" onClick={() => setIsDrawerOpen(false)} />
+          )}
+          <div className={`drawer ${isDrawerOpen ? "open" : ""}`}>
+            <div className="drawer-header">
+              <h3>Menu</h3>
+              <FaTimes
+                className="close-icon"
+                onClick={() => setIsDrawerOpen(false)}
+              />
+            </div>
 
-        <div className="drawer-content">
-          <div className="search-container">
-            <input type="text" placeholder="Search..." />
-            <FaSearch className="search-icon" />
+            <div className="drawer-content">
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <FaSearch className="search-icon" />
+              </div>
+
+              <ul className="categories">
+                {categories.map((category) => (
+                  <li key={category.id}>
+                    <a
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setSelectedCategory(category.name);
+                        setIsDrawerOpen(false);
+                      }}
+                      href="/"
+                    >
+                      {category.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <ul className="categories">
-            {categories.map((category) => (
-              <li>
-                <a href="">{category.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+        </>
+      )}
       <div className="navbar-container">
         <div className="navbar">
           <ul>
-            <li>
-              <a onClick={toggleDrawer}>
-                <FaBook className="logo" />
-              </a>
-            </li>
+            {isHome ? (
+              <li>
+                <a onClick={toggleDrawer}>
+                  <FaBook className="logo" />
+                </a>
+              </li>
+            ) : (
+              <li>
+                <a href="/">
+                  <FaBook className="logo" />
+                </a>
+              </li>
+            )}
             <li>
               <a href="/">Home</a>
             </li>
@@ -98,7 +131,8 @@ function Navbar() {
             <ul>
               <li className="dropdown-container">
                 <button className="dropdown-trigger" onClick={toggleDropdown}>
-                  Account <FaChevronDown className="chevron" />
+                  <MdAccountCircle className="account-logo" />{" "}
+                  <FaChevronDown className="chevron" />
                 </button>
 
                 {dropdownOpen && (
